@@ -1,0 +1,12 @@
+# VS / .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.db
+
+# Rider
+.idea/
+*.sln.iml
+_ReSharper.Caches/

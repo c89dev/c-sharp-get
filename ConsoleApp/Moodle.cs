@@ -3,10 +3,80 @@ using Christian;
 
 internal class Moodle
 {
+    public class DrawBox
+    {
+        ConsoleColor color = ConsoleColor.Black;
+        public void Run(int width, int height)
+        {
+            for (var row = 0; row < height + 1; row++)
+            {
+                for (var col = 0; col < width + 1; col++)
+                {
+
+                    color = (ConsoleColor)(((int)color + 1) % 4);
+                    Console.BackgroundColor = (ConsoleColor)color; 
+                    Console.SetCursorPosition(col, row);
+                    Console.Write(" ");
+                } 
+            }
+        }
+    }
+    
+    public class GuessTheNumber
+    {
+        AsciiArt art = new AsciiArt();
+        Random rnd = new Random();
+        int number;
+        int attempts = 0;
+
+        public void Init()
+        {
+            number = rnd.Next(0, 101);
+            Run();
+        }
+        
+        public void Run()
+        {
+            Console.Title = "The Guess Number";
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(art.bot); 
+            Console.WriteLine("Guess what number I'm thinking of...");
+            // Console.WriteLine(number);
+            var input = int.TryParse(Console.ReadLine(), out var guessedNumber);
+            if (!input){Run();}
+            
+            if (guessedNumber > number)
+            {
+                Console.WriteLine("A little too high...");
+                attempts++;
+                Thread.Sleep(1500);
+                Run();
+            }
+            else if (guessedNumber < number)
+            {
+                Console.WriteLine("A little too low...");
+                attempts++;
+                Thread.Sleep(1500);
+                Run();
+            }
+            else if (guessedNumber == number)
+            {
+                Console.WriteLine($"YAY YOU GOT IT, IN ONLY {attempts} TRIES!");
+                Console.WriteLine("\nWould you like to play again? (y/n)");
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                { Init();}
+                else
+                { return;}
+            }
+        }
+    }
+    
     public class CharCounter
     {
-        public void Count()
+        public void Run()
         {
+            Console.Clear();
             var range = 256;
             var counts = new int[range];
             var total = 0;
@@ -37,7 +107,7 @@ internal class Moodle
     public class TextTangler
     {
         AsciiArt art = new AsciiArt();
-        public void Play()
+        public void Run()
         {
             Console.Title = "The Text Tangling Jester";
             Console.Clear();
@@ -150,7 +220,7 @@ internal class Moodle
         int numB;
         AsciiArt art = new AsciiArt();
         
-        public void Play()
+        public void Run()
         {
             int numA = rnd.Next(0, 11);
             int numB = rnd.Next(0, 11);
@@ -184,7 +254,7 @@ internal class Moodle
                 else if (answer.Key == ConsoleKey.N)
                 {
                     Console.Clear();
-                    Play(); 
+                    Run(); 
                 }
             }
             
@@ -205,7 +275,7 @@ internal class Moodle
             }
             ;
             Console.Clear();
-            Play();
+            Run();
         }
     }
     public static void Loops()

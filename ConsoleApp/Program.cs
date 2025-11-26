@@ -9,12 +9,18 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            var charCounter = new Moodle.CharCounter();
-            charCounter.Count();
+            var box = new Moodle.DrawBox();
+            box.Run(82, 135);
+            Console.ReadLine();
+
+            // var guessTheNumber = new Moodle.GuessTheNumber();
+            // guessTheNumber.Init();
+            // var charCounter = new Moodle.CharCounter();
+            // charCounter.Run();
             // var textTangler = new Moodle.TextTangler();
-            // textTangler.Play();
+            // textTangler.Run();
             // var crocGame = new Moodle.CrocGame();
-            // crocGame.Play();
+            // crocGame.Run();
 
 
         }

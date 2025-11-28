@@ -1,6 +1,6 @@
-﻿namespace ConsoleApp;
+﻿namespace BarrenEscapades;
     
-public class DrawUI
+internal class DrawUI
 {
     public static string DrawHeader()
     {

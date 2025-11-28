@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp;
+﻿namespace BarrenEscapades;
 public class Model
 {
     public class User

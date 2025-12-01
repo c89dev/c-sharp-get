@@ -31,7 +31,7 @@
 
         public static void Write(string text, int col, int row,
             ConsoleColor foreColor = ConsoleColor.White,
-            ConsoleColor backColor = ConsoleColor.Black
+            ConsoleColor backColor = ConsoleColor.DarkBlue
         )
         {
             var originalBackgroundColor = Console.BackgroundColor;

@@ -1,22 +1,34 @@
-﻿namespace Scratchpad;
-using System;
-using System.Timers;
+﻿using System;
+using System.Threading;
+namespace Scratchpad;
 
-class Program
+class Sample
 {
-    private static Timer aTimer;
-    static void Main(string[] args)
+    public static void Main()
     {
-        aTimer = new System.Timers.Timer();
-        aTimer.Interval = 2000;
-        aTimer.Elapsed += TestMethod;
-        aTimer.Enabled = true;
-        Console.WriteLine("Hello, World!");
-        Console.ReadKey();
-    }
-    static void TestMethod(Object source, System.Timers.ElapsedEventArgs e)
-    {
-        Console.WriteLine("Timed Event fires... {0}", e.SignalTime);
-        Console.Beep();
+        ConsoleKeyInfo cki;
+        
+        do {
+            Console.WriteLine("\nPress a key to display; press the 'x' key to quit.");
+        
+            // Your code could perform some useful task in the following loop. However,
+            // for the sake of this example we'll merely pause for a quarter second.
+        
+            while (!Console.KeyAvailable)
+                Thread.Sleep(250); // Loop until input is entered.
+        
+            cki = Console.ReadKey(true);
+            Console.WriteLine("You pressed the '{0}' key.", cki.Key);
+            ScratchModel.InputChars.Add((char)cki.Key);
+            foreach (var c in ScratchModel.InputChars)
+            {
+                // Console.WriteLine($"List contains:  {c}");
+                Console.Write(c);
+            }
+        } while(cki.Key != ConsoleKey.Enter);
+        string wordString = string.Concat(ScratchModel.InputChars);
+        Console.WriteLine(wordString);
+        Console.ReadLine();
+        
     }
 }
